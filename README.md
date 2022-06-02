@@ -9,7 +9,7 @@ Content taken from [here](https://janakiev.com/blog/jupyter-virtual-envs/).
 - install ipykernal if not installed already:
   `python3 -m pip install --user ipykernel`
 - install the the ipykernal to the virtual environment:  
-  `python -m ipykernel install --user --name=<name of kernalt>`
+  `python -m ipykernel install --user --name=<name of kernal>`
 - should recieve message of the form:  
   `Installed kernelspec test-data-field-punning in <path to kernal>`
   
