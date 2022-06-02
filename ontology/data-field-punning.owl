@@ -1,0 +1,80 @@
+Prefix(:=<https://data-field-punning.owl#>)
+Prefix(owl:=<http://www.w3.org/2002/07/owl#>)
+Prefix(rdf:=<http://www.w3.org/1999/02/22-rdf-syntax-ns#>)
+Prefix(xml:=<http://www.w3.org/XML/1998/namespace>)
+Prefix(xsd:=<http://www.w3.org/2001/XMLSchema#>)
+Prefix(rdfs:=<http://www.w3.org/2000/01/rdf-schema#>)
+
+
+Ontology(<https://data-field-punning.owl>
+
+Declaration(Class(<https://data-field-punning.owl/data_value>))
+Declaration(Class(<https://data-field-punning.owl/enumerated_value>))
+Declaration(Class(<https://data-field-punning.owl/field>))
+Declaration(Class(<https://data-field-punning.owl/field_value>))
+Declaration(Class(<https://data-field-punning.owl/record>))
+Declaration(Class(<https://data-field-punning.owl/row>))
+Declaration(Class(<https://data-field-punning.owl/schema_element>))
+Declaration(Class(<https://data-field-punning.owl/table>))
+Declaration(ObjectProperty(<https://data-field-punning.owl/has_member>))
+Declaration(ObjectProperty(<https://data-field-punning.owl/member_of>))
+Declaration(ObjectProperty(<https://data-field-punning.owl/represented_by>))
+Declaration(ObjectProperty(<https://data-field-punning.owl/represents>))
+Declaration(DataProperty(<https://data-field-punning.owl/has_value>))
+############################
+#   Object Properties
+############################
+
+# Object Property: <https://data-field-punning.owl/has_member> (<https://data-field-punning.owl/has_member>)
+
+InverseObjectProperties(<https://data-field-punning.owl/has_member> <https://data-field-punning.owl/member_of>)
+TransitiveObjectProperty(<https://data-field-punning.owl/has_member>)
+
+# Object Property: <https://data-field-punning.owl/member_of> (<https://data-field-punning.owl/member_of>)
+
+TransitiveObjectProperty(<https://data-field-punning.owl/member_of>)
+
+# Object Property: <https://data-field-punning.owl/represented_by> (<https://data-field-punning.owl/represented_by>)
+
+InverseObjectProperties(<https://data-field-punning.owl/represented_by> <https://data-field-punning.owl/represents>)
+
+
+
+############################
+#   Classes
+############################
+
+# Class: <https://data-field-punning.owl/data_value> (<https://data-field-punning.owl/data_value>)
+
+SubClassOf(<https://data-field-punning.owl/data_value> <https://data-field-punning.owl/schema_element>)
+
+# Class: <https://data-field-punning.owl/enumerated_value> (<https://data-field-punning.owl/enumerated_value>)
+
+SubClassOf(<https://data-field-punning.owl/enumerated_value> <https://data-field-punning.owl/data_value>)
+
+# Class: <https://data-field-punning.owl/field> (<https://data-field-punning.owl/field>)
+
+SubClassOf(<https://data-field-punning.owl/field> <https://data-field-punning.owl/schema_element>)
+SubClassOf(<https://data-field-punning.owl/field> ObjectSomeValuesFrom(<https://data-field-punning.owl/member_of> <https://data-field-punning.owl/record>))
+
+# Class: <https://data-field-punning.owl/field_value> (<https://data-field-punning.owl/field_value>)
+
+SubClassOf(<https://data-field-punning.owl/field_value> <https://data-field-punning.owl/data_value>)
+SubClassOf(<https://data-field-punning.owl/field_value> ObjectSomeValuesFrom(<https://data-field-punning.owl/member_of> <https://data-field-punning.owl/field>))
+
+# Class: <https://data-field-punning.owl/record> (<https://data-field-punning.owl/record>)
+
+SubClassOf(<https://data-field-punning.owl/record> <https://data-field-punning.owl/schema_element>)
+SubClassOf(<https://data-field-punning.owl/record> ObjectSomeValuesFrom(<https://data-field-punning.owl/member_of> <https://data-field-punning.owl/table>))
+
+# Class: <https://data-field-punning.owl/row> (<https://data-field-punning.owl/row>)
+
+SubClassOf(<https://data-field-punning.owl/row> <https://data-field-punning.owl/schema_element>)
+SubClassOf(<https://data-field-punning.owl/row> ObjectSomeValuesFrom(<https://data-field-punning.owl/member_of> <https://data-field-punning.owl/record>))
+
+# Class: <https://data-field-punning.owl/table> (<https://data-field-punning.owl/table>)
+
+SubClassOf(<https://data-field-punning.owl/table> <https://data-field-punning.owl/schema_element>)
+
+
+)
