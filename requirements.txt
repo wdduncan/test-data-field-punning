@@ -2,4 +2,4 @@ pandas
 rdflib
 ipython
 jupyter
-
+pandasql
