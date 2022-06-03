@@ -1,11 +1,11 @@
 iri, represents
-https://data-field-punning.owl/patients.patient_id,https://data-field-punning.owl/patient
-https://data-field-punning.owl/providers.provider_id,https://data-field-punning.owl/dentist
-https://data-field-punning.owl/procedures.proc_id,https://data-field-punning.owl/procedure
-https://data-field-punning.owl/procedures.patient_id,https://data-field-punning.owl/patient
-https://data-field-punning.owl/procedures.provider_id,https://data-field-punning.owl/dentist
-https://data-field-punning.owl/procedures.tooth_num,https://data-field-punning.owl/tooth
-https://data-field-punning.owl/procedures.proc_code,https://data-field-punning.owl/procedure
+https://data-field-punning.owl/field/patients.patient_id,https://data-field-punning.owl/patient
+https://data-field-punning.owl/field/providers.provider_id,https://data-field-punning.owl/dentist
+https://data-field-punning.owl/field/procedures.proc_id,https://data-field-punning.owl/procedure
+https://data-field-punning.owl/field/procedures.patient_id,https://data-field-punning.owl/patient
+https://data-field-punning.owl/field/procedures.provider_id,https://data-field-punning.owl/dentist
+https://data-field-punning.owl/field/procedures.tooth_num,https://data-field-punning.owl/tooth
+https://data-field-punning.owl/field/procedures.proc_code,https://data-field-punning.owl/procedure
 https://data-field-punning.owl/enumerated_value/patients.gender#M,https://data-field-punning.owl/male_patient
 https://data-field-punning.owl/enumerated_value/patients.gender#F,https://data-field-punning.owl/female_patient
 https://data-field-punning.owl/enumerated_value/procedures.proc_code#d2300,https://data-field-punning.owl/crown_restoration
