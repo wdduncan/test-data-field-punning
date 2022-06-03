@@ -1,176 +1,201 @@
-Prefix(:=<https://data-field-punning.owl#>)
-Prefix(owl:=<http://www.w3.org/2002/07/owl#>)
-Prefix(rdf:=<http://www.w3.org/1999/02/22-rdf-syntax-ns#>)
-Prefix(xml:=<http://www.w3.org/XML/1998/namespace>)
-Prefix(xsd:=<http://www.w3.org/2001/XMLSchema#>)
-Prefix(rdfs:=<http://www.w3.org/2000/01/rdf-schema#>)
+@prefix : <https://data-field-punning.owl#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <https://data-field-punning.owl> .
 
+<https://data-field-punning.owl> rdf:type owl:Ontology .
 
-Ontology(<https://data-field-punning.owl>
+#################################################################
+#    Object Properties
+#################################################################
 
-Declaration(Class(<https://data-field-punning.owl/canine>))
-Declaration(Class(<https://data-field-punning.owl/crown_restoration>))
-Declaration(Class(<https://data-field-punning.owl/data_value>))
-Declaration(Class(<https://data-field-punning.owl/dentist>))
-Declaration(Class(<https://data-field-punning.owl/entity>))
-Declaration(Class(<https://data-field-punning.owl/enumerated_value>))
-Declaration(Class(<https://data-field-punning.owl/field>))
-Declaration(Class(<https://data-field-punning.owl/field_value>))
-Declaration(Class(<https://data-field-punning.owl/inlay>))
-Declaration(Class(<https://data-field-punning.owl/molar>))
-Declaration(Class(<https://data-field-punning.owl/onlay>))
-Declaration(Class(<https://data-field-punning.owl/patient>))
-Declaration(Class(<https://data-field-punning.owl/person>))
-Declaration(Class(<https://data-field-punning.owl/premolar>))
-Declaration(Class(<https://data-field-punning.owl/procedure>))
-Declaration(Class(<https://data-field-punning.owl/record>))
-Declaration(Class(<https://data-field-punning.owl/root_canal>))
-Declaration(Class(<https://data-field-punning.owl/row>))
-Declaration(Class(<https://data-field-punning.owl/schema_element>))
-Declaration(Class(<https://data-field-punning.owl/table>))
-Declaration(Class(<https://data-field-punning.owl/tooth>))
-Declaration(Class(<https://data-field-punning.owl/tooth_1>))
-Declaration(Class(<https://data-field-punning.owl/tooth_2>))
-Declaration(Class(<https://data-field-punning.owl/tooth_3>))
-Declaration(Class(<https://data-field-punning.owl/tooth_4>))
-Declaration(Class(<https://data-field-punning.owl/tooth_5>))
-Declaration(Class(<https://data-field-punning.owl/tooth_6>))
-Declaration(Class(<https://data-field-punning.owl/tooth_extraction>))
-Declaration(ObjectProperty(<https://data-field-punning.owl/has_member>))
-Declaration(ObjectProperty(<https://data-field-punning.owl/member_of>))
-Declaration(ObjectProperty(<https://data-field-punning.owl/represented_by>))
-Declaration(ObjectProperty(<https://data-field-punning.owl/represents>))
-Declaration(DataProperty(<https://data-field-punning.owl/has_value>))
-############################
-#   Object Properties
-############################
+###  https://data-field-punning.owl/has_member
+<https://data-field-punning.owl/has_member> rdf:type owl:ObjectProperty ;
+                                            owl:inverseOf <https://data-field-punning.owl/member_of> ;
+                                            rdf:type owl:TransitiveProperty .
 
-# Object Property: <https://data-field-punning.owl/has_member> (<https://data-field-punning.owl/has_member>)
 
-InverseObjectProperties(<https://data-field-punning.owl/has_member> <https://data-field-punning.owl/member_of>)
-TransitiveObjectProperty(<https://data-field-punning.owl/has_member>)
+###  https://data-field-punning.owl/member_of
+<https://data-field-punning.owl/member_of> rdf:type owl:ObjectProperty ,
+                                                    owl:TransitiveProperty .
 
-# Object Property: <https://data-field-punning.owl/member_of> (<https://data-field-punning.owl/member_of>)
 
-TransitiveObjectProperty(<https://data-field-punning.owl/member_of>)
+###  https://data-field-punning.owl/represented_by
+<https://data-field-punning.owl/represented_by> rdf:type owl:ObjectProperty ;
+                                                owl:inverseOf <https://data-field-punning.owl/represents> .
 
-# Object Property: <https://data-field-punning.owl/represented_by> (<https://data-field-punning.owl/represented_by>)
 
-InverseObjectProperties(<https://data-field-punning.owl/represented_by> <https://data-field-punning.owl/represents>)
+###  https://data-field-punning.owl/represents
+<https://data-field-punning.owl/represents> rdf:type owl:ObjectProperty .
 
 
+#################################################################
+#    Data properties
+#################################################################
 
-############################
-#   Classes
-############################
+###  https://data-field-punning.owl/has_value
+<https://data-field-punning.owl/has_value> rdf:type owl:DatatypeProperty .
 
-# Class: <https://data-field-punning.owl/canine> (<https://data-field-punning.owl/canine>)
 
-SubClassOf(<https://data-field-punning.owl/canine> <https://data-field-punning.owl/tooth>)
+#################################################################
+#    Classes
+#################################################################
 
-# Class: <https://data-field-punning.owl/crown_restoration> (<https://data-field-punning.owl/crown_restoration>)
+###  https://data-field-punning.owl/canine
+<https://data-field-punning.owl/canine> rdf:type owl:Class ;
+                                        rdfs:subClassOf <https://data-field-punning.owl/tooth> .
 
-SubClassOf(<https://data-field-punning.owl/crown_restoration> <https://data-field-punning.owl/procedure>)
 
-# Class: <https://data-field-punning.owl/data_value> (<https://data-field-punning.owl/data_value>)
+###  https://data-field-punning.owl/crown_restoration
+<https://data-field-punning.owl/crown_restoration> rdf:type owl:Class ;
+                                                   rdfs:subClassOf <https://data-field-punning.owl/procedure> .
 
-SubClassOf(<https://data-field-punning.owl/data_value> <https://data-field-punning.owl/schema_element>)
 
-# Class: <https://data-field-punning.owl/dentist> (<https://data-field-punning.owl/dentist>)
+###  https://data-field-punning.owl/data_value
+<https://data-field-punning.owl/data_value> rdf:type owl:Class ;
+                                            rdfs:subClassOf <https://data-field-punning.owl/schema_element> .
 
-SubClassOf(<https://data-field-punning.owl/dentist> <https://data-field-punning.owl/person>)
 
-# Class: <https://data-field-punning.owl/enumerated_value> (<https://data-field-punning.owl/enumerated_value>)
+###  https://data-field-punning.owl/dentist
+<https://data-field-punning.owl/dentist> rdf:type owl:Class ;
+                                         rdfs:subClassOf <https://data-field-punning.owl/person> .
 
-SubClassOf(<https://data-field-punning.owl/enumerated_value> <https://data-field-punning.owl/data_value>)
 
-# Class: <https://data-field-punning.owl/field> (<https://data-field-punning.owl/field>)
+###  https://data-field-punning.owl/entity
+<https://data-field-punning.owl/entity> rdf:type owl:Class .
 
-SubClassOf(<https://data-field-punning.owl/field> <https://data-field-punning.owl/schema_element>)
-SubClassOf(<https://data-field-punning.owl/field> ObjectSomeValuesFrom(<https://data-field-punning.owl/member_of> <https://data-field-punning.owl/record>))
 
-# Class: <https://data-field-punning.owl/field_value> (<https://data-field-punning.owl/field_value>)
+###  https://data-field-punning.owl/enumerated_value
+<https://data-field-punning.owl/enumerated_value> rdf:type owl:Class ;
+                                                  rdfs:subClassOf <https://data-field-punning.owl/data_value> .
 
-SubClassOf(<https://data-field-punning.owl/field_value> <https://data-field-punning.owl/data_value>)
-SubClassOf(<https://data-field-punning.owl/field_value> ObjectSomeValuesFrom(<https://data-field-punning.owl/member_of> <https://data-field-punning.owl/field>))
 
-# Class: <https://data-field-punning.owl/inlay> (<https://data-field-punning.owl/inlay>)
+###  https://data-field-punning.owl/field
+<https://data-field-punning.owl/field> rdf:type owl:Class ;
+                                       rdfs:subClassOf <https://data-field-punning.owl/schema_element> ,
+                                                       [ rdf:type owl:Restriction ;
+                                                         owl:onProperty <https://data-field-punning.owl/member_of> ;
+                                                         owl:someValuesFrom <https://data-field-punning.owl/record>
+                                                       ] .
 
-SubClassOf(<https://data-field-punning.owl/inlay> <https://data-field-punning.owl/procedure>)
 
-# Class: <https://data-field-punning.owl/molar> (<https://data-field-punning.owl/molar>)
+###  https://data-field-punning.owl/field_value
+<https://data-field-punning.owl/field_value> rdf:type owl:Class ;
+                                             rdfs:subClassOf <https://data-field-punning.owl/data_value> ,
+                                                             [ rdf:type owl:Restriction ;
+                                                               owl:onProperty <https://data-field-punning.owl/member_of> ;
+                                                               owl:someValuesFrom <https://data-field-punning.owl/field>
+                                                             ] .
 
-SubClassOf(<https://data-field-punning.owl/molar> <https://data-field-punning.owl/tooth>)
 
-# Class: <https://data-field-punning.owl/onlay> (<https://data-field-punning.owl/onlay>)
+###  https://data-field-punning.owl/inlay
+<https://data-field-punning.owl/inlay> rdf:type owl:Class ;
+                                       rdfs:subClassOf <https://data-field-punning.owl/procedure> .
 
-SubClassOf(<https://data-field-punning.owl/onlay> <https://data-field-punning.owl/procedure>)
 
-# Class: <https://data-field-punning.owl/patient> (<https://data-field-punning.owl/patient>)
+###  https://data-field-punning.owl/molar
+<https://data-field-punning.owl/molar> rdf:type owl:Class ;
+                                       rdfs:subClassOf <https://data-field-punning.owl/tooth> .
 
-SubClassOf(<https://data-field-punning.owl/patient> <https://data-field-punning.owl/person>)
 
-# Class: <https://data-field-punning.owl/person> (<https://data-field-punning.owl/person>)
+###  https://data-field-punning.owl/onlay
+<https://data-field-punning.owl/onlay> rdf:type owl:Class ;
+                                       rdfs:subClassOf <https://data-field-punning.owl/procedure> .
 
-SubClassOf(<https://data-field-punning.owl/person> <https://data-field-punning.owl/entity>)
 
-# Class: <https://data-field-punning.owl/premolar> (<https://data-field-punning.owl/premolar>)
+###  https://data-field-punning.owl/patient
+<https://data-field-punning.owl/patient> rdf:type owl:Class ;
+                                         rdfs:subClassOf <https://data-field-punning.owl/person> .
 
-SubClassOf(<https://data-field-punning.owl/premolar> <https://data-field-punning.owl/tooth>)
 
-# Class: <https://data-field-punning.owl/procedure> (<https://data-field-punning.owl/procedure>)
+###  https://data-field-punning.owl/person
+<https://data-field-punning.owl/person> rdf:type owl:Class ;
+                                        rdfs:subClassOf <https://data-field-punning.owl/entity> .
 
-SubClassOf(<https://data-field-punning.owl/procedure> <https://data-field-punning.owl/entity>)
 
-# Class: <https://data-field-punning.owl/record> (<https://data-field-punning.owl/record>)
+###  https://data-field-punning.owl/premolar
+<https://data-field-punning.owl/premolar> rdf:type owl:Class ;
+                                          rdfs:subClassOf <https://data-field-punning.owl/tooth> .
 
-SubClassOf(<https://data-field-punning.owl/record> <https://data-field-punning.owl/schema_element>)
-SubClassOf(<https://data-field-punning.owl/record> ObjectSomeValuesFrom(<https://data-field-punning.owl/member_of> <https://data-field-punning.owl/table>))
 
-# Class: <https://data-field-punning.owl/root_canal> (<https://data-field-punning.owl/root_canal>)
+###  https://data-field-punning.owl/procedure
+<https://data-field-punning.owl/procedure> rdf:type owl:Class ;
+                                           rdfs:subClassOf <https://data-field-punning.owl/entity> .
 
-SubClassOf(<https://data-field-punning.owl/root_canal> <https://data-field-punning.owl/procedure>)
 
-# Class: <https://data-field-punning.owl/row> (<https://data-field-punning.owl/row>)
+###  https://data-field-punning.owl/record
+<https://data-field-punning.owl/record> rdf:type owl:Class ;
+                                        rdfs:subClassOf <https://data-field-punning.owl/schema_element> ,
+                                                        [ rdf:type owl:Restriction ;
+                                                          owl:onProperty <https://data-field-punning.owl/member_of> ;
+                                                          owl:someValuesFrom <https://data-field-punning.owl/table>
+                                                        ] .
 
-SubClassOf(<https://data-field-punning.owl/row> <https://data-field-punning.owl/schema_element>)
-SubClassOf(<https://data-field-punning.owl/row> ObjectSomeValuesFrom(<https://data-field-punning.owl/member_of> <https://data-field-punning.owl/record>))
 
-# Class: <https://data-field-punning.owl/table> (<https://data-field-punning.owl/table>)
+###  https://data-field-punning.owl/root_canal
+<https://data-field-punning.owl/root_canal> rdf:type owl:Class ;
+                                            rdfs:subClassOf <https://data-field-punning.owl/procedure> .
 
-SubClassOf(<https://data-field-punning.owl/table> <https://data-field-punning.owl/schema_element>)
 
-# Class: <https://data-field-punning.owl/tooth> (<https://data-field-punning.owl/tooth>)
+###  https://data-field-punning.owl/row
+<https://data-field-punning.owl/row> rdf:type owl:Class ;
+                                     rdfs:subClassOf <https://data-field-punning.owl/schema_element> ,
+                                                     [ rdf:type owl:Restriction ;
+                                                       owl:onProperty <https://data-field-punning.owl/member_of> ;
+                                                       owl:someValuesFrom <https://data-field-punning.owl/record>
+                                                     ] .
 
-SubClassOf(<https://data-field-punning.owl/tooth> <https://data-field-punning.owl/entity>)
 
-# Class: <https://data-field-punning.owl/tooth_1> (<https://data-field-punning.owl/tooth_1>)
+###  https://data-field-punning.owl/schema_element
+<https://data-field-punning.owl/schema_element> rdf:type owl:Class .
 
-SubClassOf(<https://data-field-punning.owl/tooth_1> <https://data-field-punning.owl/molar>)
 
-# Class: <https://data-field-punning.owl/tooth_2> (<https://data-field-punning.owl/tooth_2>)
+###  https://data-field-punning.owl/table
+<https://data-field-punning.owl/table> rdf:type owl:Class ;
+                                       rdfs:subClassOf <https://data-field-punning.owl/schema_element> .
 
-SubClassOf(<https://data-field-punning.owl/tooth_2> <https://data-field-punning.owl/molar>)
 
-# Class: <https://data-field-punning.owl/tooth_3> (<https://data-field-punning.owl/tooth_3>)
+###  https://data-field-punning.owl/tooth
+<https://data-field-punning.owl/tooth> rdf:type owl:Class ;
+                                       rdfs:subClassOf <https://data-field-punning.owl/entity> .
 
-SubClassOf(<https://data-field-punning.owl/tooth_3> <https://data-field-punning.owl/molar>)
 
-# Class: <https://data-field-punning.owl/tooth_4> (<https://data-field-punning.owl/tooth_4>)
+###  https://data-field-punning.owl/tooth_1
+<https://data-field-punning.owl/tooth_1> rdf:type owl:Class ;
+                                         rdfs:subClassOf <https://data-field-punning.owl/molar> .
 
-SubClassOf(<https://data-field-punning.owl/tooth_4> <https://data-field-punning.owl/premolar>)
 
-# Class: <https://data-field-punning.owl/tooth_5> (<https://data-field-punning.owl/tooth_5>)
+###  https://data-field-punning.owl/tooth_2
+<https://data-field-punning.owl/tooth_2> rdf:type owl:Class ;
+                                         rdfs:subClassOf <https://data-field-punning.owl/molar> .
 
-SubClassOf(<https://data-field-punning.owl/tooth_5> <https://data-field-punning.owl/premolar>)
 
-# Class: <https://data-field-punning.owl/tooth_6> (<https://data-field-punning.owl/tooth_6>)
+###  https://data-field-punning.owl/tooth_3
+<https://data-field-punning.owl/tooth_3> rdf:type owl:Class ;
+                                         rdfs:subClassOf <https://data-field-punning.owl/molar> .
 
-SubClassOf(<https://data-field-punning.owl/tooth_6> <https://data-field-punning.owl/canine>)
 
-# Class: <https://data-field-punning.owl/tooth_extraction> (<https://data-field-punning.owl/tooth_extraction>)
+###  https://data-field-punning.owl/tooth_4
+<https://data-field-punning.owl/tooth_4> rdf:type owl:Class ;
+                                         rdfs:subClassOf <https://data-field-punning.owl/premolar> .
 
-SubClassOf(<https://data-field-punning.owl/tooth_extraction> <https://data-field-punning.owl/procedure>)
 
+###  https://data-field-punning.owl/tooth_5
+<https://data-field-punning.owl/tooth_5> rdf:type owl:Class ;
+                                         rdfs:subClassOf <https://data-field-punning.owl/premolar> .
 
-)
+
+###  https://data-field-punning.owl/tooth_6
+<https://data-field-punning.owl/tooth_6> rdf:type owl:Class ;
+                                         rdfs:subClassOf <https://data-field-punning.owl/canine> .
+
+
+###  https://data-field-punning.owl/tooth_extraction
+<https://data-field-punning.owl/tooth_extraction> rdf:type owl:Class ;
+                                                  rdfs:subClassOf <https://data-field-punning.owl/procedure> .
+
+
+###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi
