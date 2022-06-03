@@ -1,0 +1,16 @@
+iri, represents
+https://data-field-punning.owl/patients.patient_id,https://data-field-punning.owl/patient
+https://data-field-punning.owl/providers.provider_id,https://data-field-punning.owl/dentist
+https://data-field-punning.owl/procedures.proc_id,https://data-field-punning.owl/procedure
+https://data-field-punning.owl/procedures.patient_id,https://data-field-punning.owl/patient
+https://data-field-punning.owl/procedures.provider_id,https://data-field-punning.owl/dentist
+https://data-field-punning.owl/procedures.tooth_num,https://data-field-punning.owl/tooth
+https://data-field-punning.owl/procedures.proc_code,https://data-field-punning.owl/procedure
+https://data-field-punning.owl/enumerated_value/patients.gender#M,https://data-field-punning.owl/male_patient
+https://data-field-punning.owl/enumerated_value/patients.gender#F,https://data-field-punning.owl/female_patient
+https://data-field-punning.owl/enumerated_value/procedures.proc_code#d2300,https://data-field-punning.owl/crown_restoration
+https://data-field-punning.owl/enumerated_value/procedures.proc_code#d2400,https://data-field-punning.owl/inlay
+https://data-field-punning.owl/enumerated_value/procedures.proc_code#d2500,https://data-field-punning.owl/onlay
+https://data-field-punning.owl/enumerated_value/procedures.proc_code#d2600,https://data-field-punning.owl/root_canal
+https://data-field-punning.owl/enumerated_value/procedures.proc_code#d2700,https://data-field-punning.owl/tooth_extraction
+https://data-field-punning.owl/enumerated_value/procedures.proc_code#d2800,https://data-field-punning.owl/filling_restoration
