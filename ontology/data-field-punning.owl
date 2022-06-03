@@ -8,14 +8,34 @@ Prefix(rdfs:=<http://www.w3.org/2000/01/rdf-schema#>)
 
 Ontology(<https://data-field-punning.owl>
 
+Declaration(Class(<https://data-field-punning.owl/canine>))
+Declaration(Class(<https://data-field-punning.owl/crown_restoration>))
 Declaration(Class(<https://data-field-punning.owl/data_value>))
+Declaration(Class(<https://data-field-punning.owl/dentist>))
+Declaration(Class(<https://data-field-punning.owl/entity>))
 Declaration(Class(<https://data-field-punning.owl/enumerated_value>))
 Declaration(Class(<https://data-field-punning.owl/field>))
 Declaration(Class(<https://data-field-punning.owl/field_value>))
+Declaration(Class(<https://data-field-punning.owl/inlay>))
+Declaration(Class(<https://data-field-punning.owl/molar>))
+Declaration(Class(<https://data-field-punning.owl/onlay>))
+Declaration(Class(<https://data-field-punning.owl/patient>))
+Declaration(Class(<https://data-field-punning.owl/person>))
+Declaration(Class(<https://data-field-punning.owl/premolar>))
+Declaration(Class(<https://data-field-punning.owl/procedure>))
 Declaration(Class(<https://data-field-punning.owl/record>))
+Declaration(Class(<https://data-field-punning.owl/root_canal>))
 Declaration(Class(<https://data-field-punning.owl/row>))
 Declaration(Class(<https://data-field-punning.owl/schema_element>))
 Declaration(Class(<https://data-field-punning.owl/table>))
+Declaration(Class(<https://data-field-punning.owl/tooth>))
+Declaration(Class(<https://data-field-punning.owl/tooth_1>))
+Declaration(Class(<https://data-field-punning.owl/tooth_2>))
+Declaration(Class(<https://data-field-punning.owl/tooth_3>))
+Declaration(Class(<https://data-field-punning.owl/tooth_4>))
+Declaration(Class(<https://data-field-punning.owl/tooth_5>))
+Declaration(Class(<https://data-field-punning.owl/tooth_6>))
+Declaration(Class(<https://data-field-punning.owl/tooth_extraction>))
 Declaration(ObjectProperty(<https://data-field-punning.owl/has_member>))
 Declaration(ObjectProperty(<https://data-field-punning.owl/member_of>))
 Declaration(ObjectProperty(<https://data-field-punning.owl/represented_by>))
@@ -44,9 +64,21 @@ InverseObjectProperties(<https://data-field-punning.owl/represented_by> <https:/
 #   Classes
 ############################
 
+# Class: <https://data-field-punning.owl/canine> (<https://data-field-punning.owl/canine>)
+
+SubClassOf(<https://data-field-punning.owl/canine> <https://data-field-punning.owl/tooth>)
+
+# Class: <https://data-field-punning.owl/crown_restoration> (<https://data-field-punning.owl/crown_restoration>)
+
+SubClassOf(<https://data-field-punning.owl/crown_restoration> <https://data-field-punning.owl/procedure>)
+
 # Class: <https://data-field-punning.owl/data_value> (<https://data-field-punning.owl/data_value>)
 
 SubClassOf(<https://data-field-punning.owl/data_value> <https://data-field-punning.owl/schema_element>)
+
+# Class: <https://data-field-punning.owl/dentist> (<https://data-field-punning.owl/dentist>)
+
+SubClassOf(<https://data-field-punning.owl/dentist> <https://data-field-punning.owl/person>)
 
 # Class: <https://data-field-punning.owl/enumerated_value> (<https://data-field-punning.owl/enumerated_value>)
 
@@ -62,10 +94,42 @@ SubClassOf(<https://data-field-punning.owl/field> ObjectSomeValuesFrom(<https://
 SubClassOf(<https://data-field-punning.owl/field_value> <https://data-field-punning.owl/data_value>)
 SubClassOf(<https://data-field-punning.owl/field_value> ObjectSomeValuesFrom(<https://data-field-punning.owl/member_of> <https://data-field-punning.owl/field>))
 
+# Class: <https://data-field-punning.owl/inlay> (<https://data-field-punning.owl/inlay>)
+
+SubClassOf(<https://data-field-punning.owl/inlay> <https://data-field-punning.owl/procedure>)
+
+# Class: <https://data-field-punning.owl/molar> (<https://data-field-punning.owl/molar>)
+
+SubClassOf(<https://data-field-punning.owl/molar> <https://data-field-punning.owl/tooth>)
+
+# Class: <https://data-field-punning.owl/onlay> (<https://data-field-punning.owl/onlay>)
+
+SubClassOf(<https://data-field-punning.owl/onlay> <https://data-field-punning.owl/procedure>)
+
+# Class: <https://data-field-punning.owl/patient> (<https://data-field-punning.owl/patient>)
+
+SubClassOf(<https://data-field-punning.owl/patient> <https://data-field-punning.owl/person>)
+
+# Class: <https://data-field-punning.owl/person> (<https://data-field-punning.owl/person>)
+
+SubClassOf(<https://data-field-punning.owl/person> <https://data-field-punning.owl/entity>)
+
+# Class: <https://data-field-punning.owl/premolar> (<https://data-field-punning.owl/premolar>)
+
+SubClassOf(<https://data-field-punning.owl/premolar> <https://data-field-punning.owl/tooth>)
+
+# Class: <https://data-field-punning.owl/procedure> (<https://data-field-punning.owl/procedure>)
+
+SubClassOf(<https://data-field-punning.owl/procedure> <https://data-field-punning.owl/entity>)
+
 # Class: <https://data-field-punning.owl/record> (<https://data-field-punning.owl/record>)
 
 SubClassOf(<https://data-field-punning.owl/record> <https://data-field-punning.owl/schema_element>)
 SubClassOf(<https://data-field-punning.owl/record> ObjectSomeValuesFrom(<https://data-field-punning.owl/member_of> <https://data-field-punning.owl/table>))
+
+# Class: <https://data-field-punning.owl/root_canal> (<https://data-field-punning.owl/root_canal>)
+
+SubClassOf(<https://data-field-punning.owl/root_canal> <https://data-field-punning.owl/procedure>)
 
 # Class: <https://data-field-punning.owl/row> (<https://data-field-punning.owl/row>)
 
@@ -75,6 +139,38 @@ SubClassOf(<https://data-field-punning.owl/row> ObjectSomeValuesFrom(<https://da
 # Class: <https://data-field-punning.owl/table> (<https://data-field-punning.owl/table>)
 
 SubClassOf(<https://data-field-punning.owl/table> <https://data-field-punning.owl/schema_element>)
+
+# Class: <https://data-field-punning.owl/tooth> (<https://data-field-punning.owl/tooth>)
+
+SubClassOf(<https://data-field-punning.owl/tooth> <https://data-field-punning.owl/entity>)
+
+# Class: <https://data-field-punning.owl/tooth_1> (<https://data-field-punning.owl/tooth_1>)
+
+SubClassOf(<https://data-field-punning.owl/tooth_1> <https://data-field-punning.owl/molar>)
+
+# Class: <https://data-field-punning.owl/tooth_2> (<https://data-field-punning.owl/tooth_2>)
+
+SubClassOf(<https://data-field-punning.owl/tooth_2> <https://data-field-punning.owl/molar>)
+
+# Class: <https://data-field-punning.owl/tooth_3> (<https://data-field-punning.owl/tooth_3>)
+
+SubClassOf(<https://data-field-punning.owl/tooth_3> <https://data-field-punning.owl/molar>)
+
+# Class: <https://data-field-punning.owl/tooth_4> (<https://data-field-punning.owl/tooth_4>)
+
+SubClassOf(<https://data-field-punning.owl/tooth_4> <https://data-field-punning.owl/premolar>)
+
+# Class: <https://data-field-punning.owl/tooth_5> (<https://data-field-punning.owl/tooth_5>)
+
+SubClassOf(<https://data-field-punning.owl/tooth_5> <https://data-field-punning.owl/premolar>)
+
+# Class: <https://data-field-punning.owl/tooth_6> (<https://data-field-punning.owl/tooth_6>)
+
+SubClassOf(<https://data-field-punning.owl/tooth_6> <https://data-field-punning.owl/canine>)
+
+# Class: <https://data-field-punning.owl/tooth_extraction> (<https://data-field-punning.owl/tooth_extraction>)
+
+SubClassOf(<https://data-field-punning.owl/tooth_extraction> <https://data-field-punning.owl/procedure>)
 
 
 )
