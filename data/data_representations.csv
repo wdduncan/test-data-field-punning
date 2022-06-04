@@ -1,4 +1,4 @@
-iri, represents
+iri,represents
 https://data-field-punning.owl/field/patients.patient_id,https://data-field-punning.owl/patient
 https://data-field-punning.owl/field/providers.provider_id,https://data-field-punning.owl/dentist
 https://data-field-punning.owl/field/procedures.proc_id,https://data-field-punning.owl/procedure
