@@ -1,7 +1,7 @@
-patient_id,name,gender,dob
-1001,Rosco,M,2001-01-01
-1002,Martha,F,2002-02-02
-1003,Fred,M,2003-03-03
-1004,Wilma,F,2004-04-04
-1005,Betty,F,2005-05-05
-1006,Barney,M,2006-06-06
+patient_id,name,gender,dob,provider_id
+1001,Rosco,M,2001-01-01,1
+1002,Martha,F,2002-02-02,2
+1003,Fred,M,2003-03-03,3
+1004,Wilma,F,2004-04-04,1
+1005,Betty,F,2005-05-05,2
+1006,Barney,M,2006-06-06,3
