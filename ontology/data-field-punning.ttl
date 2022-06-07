@@ -14,49 +14,59 @@
 
 ###  https://data-field-punning.owl/defines_values_in
 <https://data-field-punning.owl/defines_values_in> rdf:type owl:ObjectProperty ;
-                                                   owl:inverseOf <https://data-field-punning.owl/values_defined_by> .
+                                                   owl:inverseOf <https://data-field-punning.owl/values_defined_by> ;
+                                                   rdfs:label "defines values in" .
 
 
 ###  https://data-field-punning.owl/has_member
 <https://data-field-punning.owl/has_member> rdf:type owl:ObjectProperty ;
                                             owl:inverseOf <https://data-field-punning.owl/member_of> ;
-                                            rdf:type owl:TransitiveProperty .
+                                            rdf:type owl:TransitiveProperty ;
+                                            rdfs:label "has member" .
 
 
 ###  https://data-field-punning.owl/has_part
 <https://data-field-punning.owl/has_part> rdf:type owl:ObjectProperty ;
-                                          owl:inverseOf <https://data-field-punning.owl/part_of> .
+                                          owl:inverseOf <https://data-field-punning.owl/part_of> ;
+                                          rdfs:label "has part" .
 
 
 ###  https://data-field-punning.owl/has_participant
 <https://data-field-punning.owl/has_participant> rdf:type owl:ObjectProperty ;
-                                                 owl:inverseOf <https://data-field-punning.owl/participates_in> .
+                                                 owl:inverseOf <https://data-field-punning.owl/participates_in> ;
+                                                 rdfs:label "has participant" .
 
 
 ###  https://data-field-punning.owl/member_of
 <https://data-field-punning.owl/member_of> rdf:type owl:ObjectProperty ,
-                                                    owl:TransitiveProperty .
+                                                    owl:TransitiveProperty ;
+                                           rdfs:label "member of" .
 
 
 ###  https://data-field-punning.owl/part_of
-<https://data-field-punning.owl/part_of> rdf:type owl:ObjectProperty .
+<https://data-field-punning.owl/part_of> rdf:type owl:ObjectProperty ;
+                                         rdfs:label "part of" .
 
 
 ###  https://data-field-punning.owl/participates_in
-<https://data-field-punning.owl/participates_in> rdf:type owl:ObjectProperty .
+<https://data-field-punning.owl/participates_in> rdf:type owl:ObjectProperty ;
+                                                 rdfs:label "participates in" .
 
 
 ###  https://data-field-punning.owl/represented_by
 <https://data-field-punning.owl/represented_by> rdf:type owl:ObjectProperty ;
-                                                owl:inverseOf <https://data-field-punning.owl/represents> .
+                                                owl:inverseOf <https://data-field-punning.owl/represents> ;
+                                                rdfs:label "represented by" .
 
 
 ###  https://data-field-punning.owl/represents
-<https://data-field-punning.owl/represents> rdf:type owl:ObjectProperty .
+<https://data-field-punning.owl/represents> rdf:type owl:ObjectProperty ;
+                                            rdfs:label "represents" .
 
 
 ###  https://data-field-punning.owl/values_defined_by
-<https://data-field-punning.owl/values_defined_by> rdf:type owl:ObjectProperty .
+<https://data-field-punning.owl/values_defined_by> rdf:type owl:ObjectProperty ;
+                                                   rdfs:label "values defined by" .
 
 
 #################################################################
@@ -64,7 +74,8 @@
 #################################################################
 
 ###  https://data-field-punning.owl/has_value
-<https://data-field-punning.owl/has_value> rdf:type owl:DatatypeProperty .
+<https://data-field-punning.owl/has_value> rdf:type owl:DatatypeProperty ;
+                                           rdfs:label "has value" .
 
 
 #################################################################
