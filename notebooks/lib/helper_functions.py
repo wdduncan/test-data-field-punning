@@ -1,4 +1,6 @@
-"""
+"""module: helper_functions
+Author: Bill Duncan
+
 This module contains a number of functions to assist with the querying and processing of tabular data.
 See `init_graph` for details on functions that get attached to rdflib.Graph.
 * `init_graph`: attaches custom functions an rdflib Graph and returns a new graph
