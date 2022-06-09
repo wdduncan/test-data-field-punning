@@ -1,3 +1,17 @@
+"""
+This module contains a number of functions to assist with the querying and processing of tabular data.
+See `init_graph` for details on functions that get attached to rdflib.Graph.
+* `init_graph`: attaches custom functions an rdflib Graph and returns a new graph
+* `add_spo`: shortcut for adding subject, predicate, object URIRefs to graph
+* `add_spo`: shortcut for adding subject, predicate URIRefs and literal value to graph
+* `sparql_results_to_df`: converts sparql results into a dataframe
+* `sparql_query_to_df`: queries the graph and returns the results as a dataframe
+* `add_table_metadata`: adds instances of tables and fields to graph
+* `add_enums`: adds instances of enumerated values to graph
+* `df_to_sql`: creates an sql query based on values in a dataframe (with specific columns)
+* `add_df_to_graph`: adds a simple rdf transformation of a dataframe into the graph
+
+"""
 import pandas as pds
 from typing import Optional, List, Any
 from rdflib import URIRef, BNode, Literal, Graph, Namespace, RDF, RDFS, OWL
