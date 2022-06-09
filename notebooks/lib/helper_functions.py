@@ -124,7 +124,7 @@ def add_enums_to_graph(enums: List,
     return graph
 
 
-def dataframe_to_sql(df: pds.DataFrame) -> str:
+def df_to_sql(df: pds.DataFrame) -> str:
     """creates an sql query based on values in a dataframe (with specific columns)"""
     # N.B.: This need to be refactored!!!
     
