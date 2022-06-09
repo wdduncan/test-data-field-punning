@@ -3,6 +3,24 @@ from typing import Optional, List, Any
 from rdflib import URIRef, BNode, Literal, Graph, Namespace, RDF, RDFS, OWL
 from rdflib.plugins.sparql.processor import SPARQLResult
 
+def init_graph(ontology:str =None, format='ttl') -> Graph:
+    """attaches custom functions an rdflib Graph and returns a new graph"""
+    
+    # attach helper functions
+    Graph.add_spo = add_spo
+    Graph.add_spv = add_spv
+    Graph.sparql_query_to_df = sparql_query_to_df
+    
+    # intstantiate Graph
+    graph = Graph()
+    
+    # parse ontology
+    if ontology:
+        return graph.parse(ontology, format=format)
+    else:
+        return graph
+    
+    
 def add_spo(self, subj: Any, predicate: Any, obj: Any) -> Graph:
     """shortcut for adding subject, predicate, object URIRefs to graph"""
     
@@ -14,15 +32,6 @@ def add_spv(self, subj: Any, predicate: Any, val: Any) -> Graph:
     
     self.add((URIRef(subj), URIRef(predicate), Literal(val)))
 
-
-def init_graph() -> Graph:
-    """attaches custom functions an rdflib Graph and returns a new graph"""
-
-    Graph.add_spo = add_spo
-    Graph.add_spv = add_spv
-
-    return Graph()
-    
 
 def sparql_results_to_df(results: SPARQLResult, graph=Optional[Graph]) -> pds.DataFrame:
     """converts sparql results into a dataframe"""
