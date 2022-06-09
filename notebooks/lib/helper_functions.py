@@ -10,7 +10,10 @@ def init_graph(ontology:str =None, format='ttl') -> Graph:
     Graph.add_spo = add_spo
     Graph.add_spv = add_spv
     Graph.sparql_query_to_df = sparql_query_to_df
-    
+    Graph.add_table_metadata = add_table_metadata
+    Graph.add_enums = add_enums
+    Graph.add_df = add_df
+        
     # intstantiate Graph
     graph = Graph()
     
@@ -21,17 +24,18 @@ def init_graph(ontology:str =None, format='ttl') -> Graph:
         return graph
     
     
-def add_spo(self, subj: Any, predicate: Any, obj: Any) -> Graph:
+def add_spo(self: Graph, subj: Any, predicate: Any, obj: Any) -> Graph:
     """shortcut for adding subject, predicate, object URIRefs to graph"""
     
     self.add((URIRef(subj), URIRef(predicate), URIRef(obj)))
+    return self
 
 
-def add_spv(self, subj: Any, predicate: Any, val: Any) -> Graph:
+def add_spv(self: Graph, subj: Any, predicate: Any, val: Any) -> Graph:
     """shortcut for adding subject, predicate URIRefs and literal value to graph"""
     
     self.add((URIRef(subj), URIRef(predicate), Literal(val)))
-
+    return self
 
 def sparql_results_to_df(results: SPARQLResult, graph=Optional[Graph]) -> pds.DataFrame:
     """converts sparql results into a dataframe"""
@@ -59,51 +63,51 @@ def sparql_results_to_df(results: SPARQLResult, graph=Optional[Graph]) -> pds.Da
         )
 
 
-def sparql_query_to_df(query: str, graph: Graph, use_ns=True) -> pds.DataFrame:
+def sparql_query_to_df(self: Graph, query: str, use_ns=True) -> pds.DataFrame:
     """queries the graph and returns the results as a dataframe"""
     
-    results = graph.query(query)
+    results = self.query(query)
     if use_ns:
-        return sparql_results_to_df(results, graph)
+        return sparql_results_to_df(results, self)
     else:
         return sparql_results_to_df(results, None)
 
 
-def add_table_metadata_to_graph(table: pds.DataFrame, 
-                                table_name: str, 
-                                graph: Graph, 
-                                table_ns: Namespace, 
-                                field_ns: Namespace, 
-                                property_ns: Namespace) -> Graph:
+def add_table_metadata(self: Graph,
+                        table: pds.DataFrame, 
+                        table_name: str, 
+                        table_ns: Namespace, 
+                        field_ns: Namespace, 
+                        property_ns: Namespace) -> Graph:
     """adds instances of tables and fields to graph"""
     
     # add table instance to graph
     table_uri = table_ns[f'/{table_name}']
-    graph = add_spo(graph, table_uri, RDF.type, table_ns)
-    graph = add_spv(graph, table_uri, RDFS.label, table_name)
+    self.add_spo(table_uri, RDF.type, table_ns)
+    self.add_spv(table_uri, RDFS.label, table_name)
         
     # add each of the tables fields to graph as instances and subclass of fields
     for field_name in table.columns:
         field_name = f'{table_name}.{field_name}' # prepend table name to field name
         uri = URIRef(field_ns[f'/{field_name}'])
-        graph = add_spo(graph, uri, RDF.type, field_ns)
-        grpah = add_spo(graph, uri, property_ns.member_of, table_uri)
-        graph = add_spv(graph, uri, RDFS.label, field_name)
+        self.add_spo(uri, RDF.type, field_ns)
+        self.add_spo(uri, property_ns.member_of, table_uri)
+        self.add_spv(uri, RDFS.label, field_name)
         
         # *pun* the field as an owl class
         # note: field_ns[:-1] removes the last "/" from the uri
-        graph = add_spo(graph, uri, RDF.type, OWL.Class)
-        graph = add_spo(graph, uri, RDFS.subClassOf, field_ns[:-1])
+        self.add_spo(uri, RDF.type, OWL.Class)
+        self.add_spo(uri, RDFS.subClassOf, field_ns[:-1])
     
-    return graph
+    return self
 
 
-def add_enums_to_graph(enums: List, 
-                       table_name: str, 
-                       field_name: str, 
-                       graph: Graph, 
-                       enum_ns: Namespace, 
-                       base_ns: Namespace) -> Graph:
+def add_enums(self: Graph,
+             enums: List, 
+             table_name: str, 
+             field_name: str, 
+             enum_ns: Namespace, 
+             base_ns: Namespace) -> Graph:
     """adds instances of enumerated values to graph"""
     
     field_name = f'{table_name}.{field_name}' # prepend table name to field name
@@ -113,15 +117,15 @@ def add_enums_to_graph(enums: List,
 
         # add instances
         # Note: the literal value is added to the graph as well
-        graph = add_spo(graph, uri, RDF.type, enum_ns)
-        graph = add_spv(graph, uri, base_ns.has_value, enum)
-        graph = add_spv(graph, uri, RDFS.label, f'{field_name} {enum}')
+        self.add_spo(uri, RDF.type, enum_ns)
+        self.add_spv(uri, base_ns.has_value, enum)
+        self.add_spv(uri, RDFS.label, f'{field_name} {enum}')
 
         # enums constrain values in fields, so add this informaton the graph
         field = base_ns[f'field/{field_name}']
-        graph = add_spo(graph, uri, base_ns.defines_values_in, field)
+        self.add_spo(uri, base_ns.defines_values_in, field)
         
-    return graph
+    return self
 
 
 def df_to_sql(df: pds.DataFrame) -> str:
@@ -228,32 +232,32 @@ def df_to_sql(df: pds.DataFrame) -> str:
     return sql
 
 
-def add_dataframe_to_graph(graph: Graph, df: pds.DataFrame, table_name, field_ns: Namespace, base_ns: Namespace) -> Graph:
+def add_df(self: Graph, df: pds.DataFrame, table_name, field_ns: Namespace, base_ns: Namespace) -> Graph:
     """adds a simple rdf transformation of a dataframe into the graph"""
     
     for row in df.itertuples(index=None):
         # add row as blank node to table
         row_uri = BNode() 
         table_uri = base_ns[f'table/{table_name}']
-        graph = add_spo(graph, row_uri, RDF.type, base_ns.row)
-        graph = add_spo(graph, row_uri, base_ns.member_of, table_uri)
+        self.add_spo(row_uri, RDF.type, base_ns.row)
+        self.add_spo(row_uri, base_ns.member_of, table_uri)
         
         # for each field in row
         for field_name, value in row._asdict().items():
             # add instance of field value using blank node
             field_value_uri = BNode()
-            graph = add_spo(graph, field_value_uri, RDF.type, base_ns.field_value)
-            graph = add_spv(graph, field_value_uri, base_ns.has_value, value)
+            self.add_spo(field_value_uri, RDF.type, base_ns.field_value)
+            self.add_spv(field_value_uri, base_ns.has_value, value)
                         
             # relate row to field value using *punned* field name
             field_uri = field_ns[f'/{table_name}.{field_name}']
-            graph = add_spo(graph, field_uri, RDF.type, OWL.ObjectProperty)
-            graph = add_spo(graph, row_uri, field_uri, field_value_uri)
+            self.add_spo(field_uri, RDF.type, OWL.ObjectProperty)
+            self.add_spo(row_uri, field_uri, field_value_uri)
             
             # relate field value to field and field to row via 'member of'
             field_instance_uri = BNode()
-            graph = add_spo(graph, field_instance_uri, RDF.type, field_uri)
-            graph = add_spo(graph, field_instance_uri, base_ns.member_of, row_uri)
-            graph = add_spo(graph, field_value_uri, base_ns.member_of, field_instance_uri)
+            self.add_spo(field_instance_uri, RDF.type, field_uri)
+            self.add_spo(field_instance_uri, base_ns.member_of, row_uri)
+            self.add_spo(field_value_uri, base_ns.member_of, field_instance_uri)
 
-    return graph
+    return self
