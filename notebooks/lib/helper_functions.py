@@ -15,6 +15,7 @@ See `init_graph` for details on functions that get attached to rdflib.Graph.
 
 """
 import pandas as pds
+import itertools
 from typing import Optional, List, Any
 from rdflib import URIRef, BNode, Literal, Graph, Namespace, RDF, RDFS, OWL
 from rdflib.plugins.sparql.processor import SPARQLResult
@@ -160,8 +161,8 @@ def df_to_sql(df: pds.DataFrame) -> str:
     
     
     # gather all table and field names in dataframe
-    all_tables = set(field_df['table_name'])
-    all_fields = set(field_df['field_name'])
+    all_tables = set(df['table_name'])
+    all_fields = set(df['field_name'])
     
     # dict to hold whether the table occurs in a 'from' clause or 'join' clause
     table_clause_dict = {'from': '', 'joins': []}
