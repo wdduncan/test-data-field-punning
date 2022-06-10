@@ -252,10 +252,13 @@ def df_to_sql(df: pds.DataFrame) -> str:
 def add_df(self: Graph, df: pds.DataFrame, table_name, field_ns: Namespace, base_ns: Namespace) -> Graph:
     """adds a simple rdf transformation of a dataframe into the graph"""
     
+    # add table to graph
+    table_uri = base_ns[f'table/{table_name}']
+    self.add_spo(table_name, RDF.type, base_ns.table)
+    
     for row in df.itertuples(index=None):
         # add row as blank node to table
         row_uri = BNode() 
-        table_uri = base_ns[f'table/{table_name}']
         self.add_spo(row_uri, RDF.type, base_ns.row)
         self.add_spo(row_uri, base_ns.member_of, table_uri)
         
