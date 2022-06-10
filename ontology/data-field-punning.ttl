@@ -107,7 +107,8 @@
 
 
 ###  https://data-field-punning.owl/entity
-<https://data-field-punning.owl/entity> rdf:type owl:Class .
+<https://data-field-punning.owl/entity> rdf:type owl:Class ;
+                                        rdfs:label "entity" .
 
 
 ###  https://data-field-punning.owl/enumerated_value
